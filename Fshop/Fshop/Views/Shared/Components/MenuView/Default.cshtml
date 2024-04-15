@@ -1,0 +1,29 @@
+﻿@model IList<Menu>
+
+<nav class="main-menu">
+    <ul>
+        @foreach (var menuItem in Model.Where(m => m.Levels == 1))
+        {
+            <li class="">
+                <a href="@menuItem.ControllerName">@menuItem.MenuName</a>
+                @if (Model.Any(m => m.ParentID == menuItem.MenuID))
+                {
+                    <ul class="sub-menu">
+                        @foreach (var subMenu in Model.Where(m => m.ParentID == menuItem.MenuID))
+                        {
+                            <li><a href="@subMenu.ActionName">@subMenu.MenuName</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+        <li>
+            <div class="header-icons">
+                <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a class="fa fa-user" href="https://localhost:7079/Admin"></a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+<div class="mobile-menu"></div>

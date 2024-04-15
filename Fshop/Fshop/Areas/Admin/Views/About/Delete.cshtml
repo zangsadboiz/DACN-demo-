@@ -1,0 +1,35 @@
+﻿@model Fshop.Models.About
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Xác nhận xóa dịch vụ</h2>
+    </div>
+    <div class="container shadow p-5">
+        <div class="row pb-2">
+            <h2>Xóa dịch vụ</h2>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="FeaturesID">ID dịch vụ</label>
+                <input type="text" class="form-control mb-3" id="FeaturesID" name="FeaturesID" value="@Model.FeaturesID" disabled />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="FeaturesTitle">Tên dịch vụ</label>
+                <input type="text" class="form-control mb-3" id="FeaturesTitle" name="FeaturesTitle" value="@Model.FeaturesTitle" disabled />
+            </div>
+        </div>
+        <form asp-action="Delete" method="post">
+            <div class="form-group">
+                <a class="btn btn-lg btn-warning mr-3" href="javascript:history.back();">
+                    <i class="bi bi-arrow-left-circle"></i> Quay lại
+                </a>
+                <button type="submit" class="btn btn-lg btn-danger">
+                    <i class="bi bi-trash-fill"></i> Xóa dịch vụ
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+

@@ -1,0 +1,53 @@
+﻿@model Fshop.Areas.Admin.Models.AdminUser;
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Xác nhận sửa người dùng</h2>
+    </div>
+    <div class="container shadow p-5">
+        <div class="row pb-2">
+            <h2>Sửa người dùng</h2>
+        </div>
+        <form method="post" asp-action="Edit">
+            <div asp-validation-summary="All"></div>
+            <input asp-for="UserID" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="UserName">Tên người dùng</label>
+                <input asp-for="UserName" class="form-control" placeholder="Nhập tên người dùng" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Email">Email</label>
+                    <input type="email" class="form-control mb-3" asp-for="Email" placeholder="Nhập email" required />
+                    <span asp-validation-for="Email" class="alert-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="Password">Mật khẩu</label>
+                    <input asp-for="Password" class="form-control" placeholder="Nhập mật khẩu" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>
+                        @Html.CheckBox("IsActive",false)
+                        Hiển thị
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <a asp-controller="AdminUser" asp-action="Index" class="btn btn-warning">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</main>

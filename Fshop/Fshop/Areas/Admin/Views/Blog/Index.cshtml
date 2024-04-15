@@ -1,0 +1,64 @@
+﻿@using Fshop.Models;
+@model IList<Post>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Danh sách bài viết</h2>
+    </div>
+
+    <div class="container shadow p-5">
+        <div class="row mb-3">
+            <div class="col-12">
+                <a type="button" class="btn btn-dark" asp-area="Admin" asp-controller="Blog" asp-action="Create">
+                    <i class="bi bi-file-earmark-text me-1"></i>
+                    Thêm bài viết
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card recent-sales">
+                    <div class="card-body mt-4">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Tiêu đề</th>
+                                    <th class="text-center">Ẩn/Hiện</th>
+                                    <th class="text-center">Hình ảnh</th>
+                                    <th class="text-center">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">@item.PostID</td>
+                                        <td>
+                                            <a asp-area="Admin" asp-controller="Post" asp-action="Details"
+                                               asp-route-id="@item.PostID" class="text-primary">@item.Title</a>
+                                        </td>
+                                        <td class="text-center">@item.IsActive</td>
+                                        <td class="text-center">
+                                            <img src="@item.Images" alt="Hình ảnh" style="max-width: 50px; max-height: 50px;" />
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-area="Admin" asp-controller="Blog" asp-action="Edit"
+                                               asp-route-id="@item.PostID" class="btn btn-dark btn-sm"
+                                               title="Sửa nội dung bài viết"><i class="bi bi-pencil"></i></a>
+                                            <a asp-area="Admin" asp-controller="Blog" asp-action="Delete"
+                                               asp-route-id="@item.PostID" class="btn btn-light"
+                                               title="Xóa thông tin bài viết"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,144 @@
+﻿@using Fshop.Utilities;
+@model Fshop.Areas.Admin.Models.AdminUser;
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Register</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Vendor CSS Files -->
+    <link href="~/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/admin/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                    <img src="assets/img/logo.png" alt="">
+                                    <span class="d-none d-lg-block">FShop</span>
+                                </a>
+
+                            </div><!-- End Logo-->
+
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="pt-4 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4"> Thêm tài khoản</h5>
+                                        <p class="text-center small">Nhập thông tin cá nhân để tạo tài khoản.</p>
+                                    </div>
+                                    <form class="row g-3 needs-validation" novalidate asp-controller="Register" asp-action="Index">
+                                        <div class="col-12">
+                                            <label for="yourName" class="form-label">Tên của bạn</label>
+                                            <input type="text" asp-for="UserName" class="form-control" id="yourName" required />
+                                            <div class="invalid-feedback" id="nameFeedback">Nhập tên của bạn!!</div>
+                                        </div>
+
+                                        <script>
+                                            document.getElementById('yourName').addEventListener('input', function () {
+                                                var nameInput = this.value.trim();
+                                                var nameFeedback = document.getElementById('nameFeedback');
+
+                                                // Kiểm tra xem tên có bắt đầu bằng chữ cái hay không
+                                                if (/^[a-zA-Z]/.test(nameInput)) {
+                                                    this.setCustomValidity('');
+                                                    nameFeedback.style.display = 'none';
+                                                } else {
+                                                    this.setCustomValidity('invalid');
+                                                    nameFeedback.style.display = 'block';
+                                                }
+                                            });
+                                        </script>
+
+
+                                        <div class="col-12">
+                                            <div class="col-12">
+                                                <label for="yourEmail" class="form-label">Email</label>
+                                                <input type="email" asp-for="Email" class="form-control" id="yourEmail" required />
+                                                <div class="invalid-feedback" id="emailFeedback">Vui lòng nhập địa chỉ tài khoản hợp lệ!</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="yourPassword" class="form-label"> Mật khẩu</label>
+                                            <input type="password" asp-for="Password" class="form-control" id="yourPassword" required />
+                                            <div class="invalid-feedback">Nhập mật khẩu của bạn!</div>
+
+                                        </div>
+                                        <div class="form-group d-none">
+                                            <input asp-for="IsActive" class="form-control" value="True" />
+                                        </div>
+
+                                        <div class="col-12 text-center text-danger ">
+                                            <h6>
+                                                @Functions._MessageEmail;
+                                            </h6>
+                                        </div>
+
+
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Thêm tài khoản</button>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <p class="small mb-0">Bạn đã có tài khoản? <a href="/Admin/Login"> Đăng nhập</a></p>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+                            <div class="credits">
+                                Designed by <a href="https://boostrapmade.com">zangsadboiz</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+    </main><!--End main-->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+    <!-- Vendor JS Files -->
+    <script href="~/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script href="~/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script href="~/admin/assets/vendor/chart.js/chart.min.js"></script>
+    <script href="~/admin/assets/vendor/echarts/echarts.min.js"></script>
+    <script href="~/admin/assets/vendor/quill/quill.min.js"></script>
+    <script href="~/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script href="~/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script href="~/admin/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script href="~/admin/assets/js/main.js"></script>
+
+</body>
+
+
+</html>

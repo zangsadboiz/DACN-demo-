@@ -1,0 +1,43 @@
+﻿@model IList<Fshop.Models.Product>
+@using Fshop.Utilities;
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Fresh and Organic</p>
+						<h1>Shop</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+	<!-- products -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+			@foreach (var item in Model)
+			{
+				<div class="col-lg-4 col-md-6 text-center @item.Category">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="@item.Images" alt="" style="width: 200px; height: 150px;"></a>
+						</div>
+
+						<h3>@item.ProductName</h3>
+						<p class="product-price"><span>Per Kg</span> @item.Price$ </p>
+						<p>@item.Contents</p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+			}
+
+			</div>
+
+		</div>
+	</div>
+	<!-- end products -->
+

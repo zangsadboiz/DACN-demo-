@@ -1,0 +1,49 @@
+﻿@model Fshop.Models.About
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Xác nhận sửa dịch vụ</h2>
+    </div>
+    <div class="container shadow p-5">
+        <div class="row pb-2">
+            <h2>Sửa dịch vụ</h2>
+        </div>
+        <form method="post" asp-action="Edit">
+            <div asp-validation-summary="All"></div>
+            <input asp-for="FeaturesID" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="FeaturesTitle">Tiêu đề</label>
+                <input asp-for="FeaturesTitle" class="form-control" placeholder="Nhập tiêu đề" />
+                <span asp-validation-for="FeaturesTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FeaturesIcon">Biểu tượng</label>
+                <input asp-for="FeaturesIcon" class="form-control" placeholder="Nhập biểu tượng" />
+                <span asp-validation-for="FeaturesIcon" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">Mô tả</label>
+                <input asp-for="Description" class="form-control" placeholder="Nhập mô tả" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>
+                        @Html.CheckBox("IsActive",false)
+                        Hiển thị
+                    </label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <a asp-controller="About" asp-action="Index" class="btn btn-warning">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</main>
